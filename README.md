@@ -74,6 +74,7 @@ weibo.search_news('赵丽颖')
     "text": "正文内容",        # 文本内容
     "user": "用户名",         # 发布用户
     "userID": 123456,         # 用户ID
+    "mid": 123456,         # 内容ID
     "time_int": 1234567890,   # 发布时间戳
     "media_type": "img",      # 媒体类型（img/video）
     "media_list": [],         # 媒体文件列表
