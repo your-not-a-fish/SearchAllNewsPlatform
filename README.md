@@ -23,7 +23,7 @@
 
 ## 使用方法
 
-### 1. 微博数据采集
+### 1. 微博数据采集（单项目搜索）
 
 ```python
 from search_weibo import WeiBoSearch
@@ -31,47 +31,35 @@ from search_weibo import WeiBoSearch
 # 初始化搜索器
 weibo = WeiBoSearch()
 
-# 设置采集页数
+# 设置采集页数（默认是5页）
 weibo.page_num = 2
 
 # 执行搜索并保存数据
 json_file = weibo.search_and_storage('关键词')
 ```
 
-### 2. 头条数据采集
+### 2. 全网搜索
 
 ```python
-from search_toutiao import TouTiaoSearch
-
-# 初始化搜索器
-toutiao = TouTiaoSearch()
-
-# 执行搜索
-data_list = toutiao.search_news('关键词')
+news = SearchNews()
+news.page_num = 1
+news.search_and_storage('赵丽颖')
 ```
 
-### 3. 自定义数据过滤
+### 3. 自定义数据过滤及存储
 
 ```python
-from filter import FilterDataDict
-
-# 创建过滤器
+# 定义筛选条件（不设置就不会筛选）
 filter_options = FilterDataDict()
+filter_options.limit_hours = 48  # 只选择48小时内的资讯
 
-# 使用自定义过滤器
-weibo = WeiBoSearch(filter_options=filter_options)
-```
-
-### 4. 自定义数据存储
-
-```python
-from storage import Storage
-
-# 创建存储器
+# 定义存储方案
 storage_options = Storage()
+storage_options.root = 'file_root'  # 定义根目录
 
-# 使用自定义存储器
-weibo = WeiBoSearch(storage_options=storage_options)
+weibo = WeiBoSearch(filter_options=filter_options, storage_options=storage_options)
+weibo.page_num = 2
+weibo.search_news('赵丽颖')
 ```
 
 ## 数据格式
