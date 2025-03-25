@@ -79,9 +79,9 @@ class SearchNews(object):
 
 
 
-news = SearchNews()
-news.page_num = 1
-news.search_and_storage('赵丽颖')
+# news = SearchNews()
+# news.page_num = 1
+# news.search_and_storage('赵丽颖')
 
 
 
